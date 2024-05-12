@@ -22,7 +22,6 @@ class OrderTest extends TestCase {
     public function testOrderIsProcessedUsingAMock() {
     }
     
-
     //Créer un spy
     public function testOrderIsProcessedUsingASpy() {
     }
