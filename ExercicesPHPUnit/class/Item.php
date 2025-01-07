@@ -2,19 +2,23 @@
 
 class Item
 {
-    public function getDescription() {
-        return $this->getID() . $this->getToken();
+    public function getDescription()
+    {
+        return $this->getID().$this->getToken();
     }
-    
-    protected function getID() {
+
+    protected function getID()
+    {
         return rand();
     }
 
-    private function getToken() {
+    protected function getToken()
+    {
         return uniqid();
     }
 
-    private function getPrefixedToken($prefix) {
+    public function getPrefixedToken($prefix)
+    {
         return uniqid($prefix);
     }
 }

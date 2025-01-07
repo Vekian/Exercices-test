@@ -9,9 +9,10 @@ class AbstractPersonTest extends TestCase
         $person = new Doctor('Bob');
         $this->assertEquals('Dr. Bob', $person->getNameAndTitle());
     }
-    
+
     public function testNameAndTitleIncludesValueFromGetTitle()
     {
-
-    }    
+        $person = new Doctor('Bob');
+        $this->assertStringContainsString('Dr.', $person->getNameAndTitle());
+    }
 }
