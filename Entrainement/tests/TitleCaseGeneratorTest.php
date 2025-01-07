@@ -5,54 +5,59 @@ use PHPUnit\Framework\TestCase;
 
 class TitleCaseGeneratorTest extends TestCase
 {
-
     public function testGenerateTitleCaseFromSentence()
     {
-        //Prepare
-        //Act
-        //Assert
+        $generator = new TitleCaseGenerator();
+        $sentence = "chouette, j'ai faim";
+        $newSentence = $generator->makeTitleCase($sentence);
+        $this->assertIsString($newSentence);
     }
 
-    function test_makeTitleCase_oneWord()
+    public function testMakeTitleCaseOneWord()
     {
-        //Prepare
-        //Act
-        //Assert            
+        $generator = new TitleCaseGenerator();
+        $sentence = "chouette";
+        $newSentence = $generator->makeTitleCase($sentence);
+        $this->assertEquals("Chouette", $newSentence);
     }
 
-    function test_makeTitleCase_multipleWords()
+    public function testMakeTitleCaseMultipleWords()
     {
-        //Prepare
-        //Act
-        //Assert           
+        $generator = new TitleCaseGenerator();
+        $sentence = "chouette, j'ai faim";
+        $newSentence = $generator->makeTitleCase($sentence);
+        $this->assertEquals("Chouette, J'ai Faim", $newSentence);
     }
 
-    function test_makeTitleCase_lowercasePrep()
+    public function testMakeTitleCaseLowercasePrep()
     {
-        //Prepare     
-        //Act
-        //Assert           
+        $generator = new TitleCaseGenerator();
+        $sentence = "choUette, j'aI faiM";
+        $newSentence = $generator->makeTitleCase($sentence);
+        $this->assertEquals("Chouette, J'ai Faim", $newSentence);
     }
 
-    function test_makeTitleCase_upperToLower()
+    public function testMakeTitleCaseUpperToLower()
     {
-        //Prepare            
-        //Act
-        //Assert
+        $generator = new TitleCaseGenerator();
+        $sentence = "CHOUETTE, J'AI FAIM";
+        $newSentence = $generator->makeTitleCase($sentence);
+        $this->assertEquals("Chouette, J'ai Faim", $newSentence);
     }
 
-    function test_makeTitleCase_nonNumeric()
+    public function testMakeTitleCaseNonNumeric()
     {
-        //Prepare
-        //Act
-        //Assert           
+        $generator = new TitleCaseGenerator();
+        $sentence = 58;
+        $newSentence = $generator->makeTitleCase($sentence);
+        $this->assertEquals("58", $newSentence);
     }
 
-    function test_makeTitleCase_mixedCase()
+    public function testMakeTitleCaseMixedCase()
     {
-        //Prepare            
-        //Act
-        //Assert
+        $generator = new TitleCaseGenerator();
+        $sentence = "CHOueTT58E, J'AI FAIM";
+        $newSentence = $generator->makeTitleCase($sentence);
+        $this->assertEquals("Chouett58e, J'ai Faim", $newSentence);
     }
-
 }
